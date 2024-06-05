@@ -7,7 +7,7 @@ document.getElementById("form").addEventListener("submit", (e) => {
   console.log(text);
   note = {
     textarea: text,
-    dateofnote: Date(),
+    dateofnote:  new Date(),
   };
   notedata.push(note);
   localStorage.setItem("notedata", JSON.stringify(notedata));
@@ -22,12 +22,16 @@ const displayNote = () => {
     const noteHTML = `
     <div id="displayarea">
       <p>${number}.${note.textarea}</p>
+      
       <button class="deletebtn" data-index=${index} onclick="deleteNotes()">Delete</button>
       <p class="date">${note.dateofnote}</p>
+      <hr>
     </div>
     `;
+    
 
-    div.innerHTML += noteHTML; 
+    div.innerHTML += noteHTML;
+    //document.body.appendChild(noteHTML);
   });
 };
 function deleteNotes(index) {
